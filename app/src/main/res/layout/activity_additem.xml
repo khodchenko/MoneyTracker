@@ -7,7 +7,8 @@
     tools:context=".AddItemActivity">
     <TextView
         android:text="Add Item"
-        android:textSize="100dp"
+        android:background="#FF6754"
+        android:textSize="100sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
@@ -16,6 +17,9 @@
 
 
 <!--
-    mdpi: 1x
-
+    mdpi:    1x   100dp -> 100px
+    hdpi:   1.5x  100dp -> 150px
+    xhdpi:   2x   100dp -> 200px
+    xxhdpi:  3x
+    xxxhdpi: 4x
 -->
