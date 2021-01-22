@@ -9,6 +9,7 @@
     tools:context=".AddItemActivity">
 
     <LinearLayout
+        android:elevation="@android:dimen/app_icon_size"
         android:orientation="horizontal"
         android:background="@color/white"
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
 
         <EditText
             android:id="@+id/name"
-            android:hint="Название"
+            android:hint="@string/add_item_stringName"
             android:background="@null"
             android:inputType="text"
             android:maxLines="1"
@@ -29,7 +30,7 @@
 
         <EditText
             android:id="@+id/price"
-            android:hint="0 ₴"
+            android:hint="@string/add_item_stringPrice"
             android:gravity="right"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="22dp"

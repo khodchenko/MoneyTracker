@@ -20,6 +20,7 @@ public class AddItemActivity extends AppCompatActivity {
     private EditText price;
     private Button addBtn;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
