@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#95c9b8</color>
+    <color name="colorPrimaryDark">#87b5a6</color>
+    <color name="colorAccent">#1ca498</color>
+
+    <color name="colorPrimaryBright">#3ab7ae</color>
+
+    <color name="colorShadow">#30303030</color>
+    <color name="colorItem">#fcc31e</color>
+    <color name="colorItemDark">#daa10c</color>
+    <color name="colorItemSelected">#985305</color>
+    <color name="colorExpense">#f76c41</color>
+    <color name="colorComment">#95989a</color>
+
+    <color name="colorInactive">#ddede8</color>
+    <color name="colorActive">@android:color/white</color>
+    <color name="colorIndicator">#ffff8d</color>
+    <color name="list_item_text">#ffffff</color>
+    <color name="white">#fff</color>
+
+    <color name="tab_indicator_color">#ffff8d</color>
+    <color name="tab_text_color_active">#ffffff</color>
+    <color name="tab_text_color_default">#ddede8</color>
+
+
+    <color name="balance_total_color">#3ab7ae</color>
+    <color name="balance_expense_color">#f76c41</color>
+    <color name="balance_income_color">#fcc31e</color>
+    <color name="balance_secondary_text_color">#95989a</color>
 </resources>
