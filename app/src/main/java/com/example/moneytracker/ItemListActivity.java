@@ -42,16 +42,16 @@ public class ItemListActivity extends AppCompatActivity {
         mData.add(new Record("Тот самый ужин,который я уплатил за всех, потому что платил картой", 600000));
         mData.add(new Record("", 0));
         mData.add(new Record("Тот самый ужин", 0));
-        mData.add(new Record( "ракета Falcon Heavy",1));
-        mData.add(new Record( "Лего Тысячилетний сокол",10000000));
-        mData.add(new Record( "Монитор",109));
-        mData.add(new Record( "Макбук",100));
-        mData.add(new Record( "Шкаф",100));
-        mData.add(new Record( "Шоколадка",100));
+        mData.add(new Record("ракета Falcon Heavy", 1));
+        mData.add(new Record("Лего Тысячилетний сокол", 10000000));
+        mData.add(new Record("Монитор", 109));
+        mData.add(new Record("Макбук", 100));
+        mData.add(new Record("Шкаф", 100));
+        mData.add(new Record("Шоколадка", 100));
 
     }
 
-    private class ItemListAdapter extends RecyclerView.Adapter<RecordViewHolder>{
+    private class ItemListAdapter extends RecyclerView.Adapter<RecordViewHolder> {
 
 
         @Override
@@ -62,7 +62,7 @@ public class ItemListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(RecordViewHolder holder, int position) {
-            Record record  = mData.get(position);
+            Record record = mData.get(position);
             holder.applyData(record);
         }
 
@@ -75,13 +75,14 @@ public class ItemListActivity extends AppCompatActivity {
     private class RecordViewHolder extends RecyclerView.ViewHolder {
         private final TextView title;
         private final TextView price;
+
         public RecordViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             price = itemView.findViewById(R.id.price);
         }
 
-        public void applyData(Record record){
+        public void applyData(Record record) {
             title.setText(String.valueOf(record.getTitle()));
             price.setText(String.valueOf(record.getPrice()));
         }
