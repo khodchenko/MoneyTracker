@@ -9,16 +9,18 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="false"
         android:theme="@style/Theme.MoneyTracker">
-        <activity android:name=".AddItemActivity"  >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".AddItemActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity">
 
         </activity>
+        <activity android:name=".ItemListActivity"
+            android:title="@string/activity_items_list_title"/>
     </application>
 
 </manifest>
