@@ -1,9 +1,7 @@
 package com.example.moneytracker;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,7 +17,7 @@ public class ItemListActivity extends AppCompatActivity {
 
     private RecyclerView mRecycleView;
     private List<Record> mData = new ArrayList<>();
-    private ItemListAdapter mAdapter;
+    private ItemsAdapter mAdapter;
 
 
     @Override
@@ -29,7 +27,7 @@ public class ItemListActivity extends AppCompatActivity {
         createData();
         mRecycleView = findViewById(R.id.list);
         mRecycleView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new ItemListAdapter();
+        mAdapter = new ItemsAdapter(this);
         mRecycleView.setAdapter(mAdapter);
 
     }
@@ -51,40 +49,5 @@ public class ItemListActivity extends AppCompatActivity {
 
     }
 
-    private class ItemListAdapter extends RecyclerView.Adapter<RecordViewHolder> {
 
-
-        @Override
-        public RecordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new RecordViewHolder(LayoutInflater.from(parent.getContext()).
-                    inflate(R.layout.item_record, parent, false));
-        }
-
-        @Override
-        public void onBindViewHolder(RecordViewHolder holder, int position) {
-            Record record = mData.get(position);
-            holder.applyData(record);
-        }
-
-        @Override
-        public int getItemCount() {
-            return mData.size();
-        }
-    }
-
-    private class RecordViewHolder extends RecyclerView.ViewHolder {
-        private final TextView title;
-        private final TextView price;
-
-        public RecordViewHolder(@NonNull View itemView) {
-            super(itemView);
-            title = itemView.findViewById(R.id.title);
-            price = itemView.findViewById(R.id.price);
-        }
-
-        public void applyData(Record record) {
-            title.setText(String.valueOf(record.getTitle()));
-            price.setText(String.valueOf(record.getPrice()));
-        }
-    }
 }
