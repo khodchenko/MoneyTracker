@@ -9,12 +9,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
 
-    private List<Record> data = new ArrayList<>();
+    private List<Item> data = new ArrayList<>();
 
     public ItemsAdapter(){
         createData();
@@ -29,8 +28,8 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
 
     @Override
     public void onBindViewHolder(ItemsAdapter.ItemViewHolder holder, int position) {
-        Record record = data.get(position);
-        holder.applyData(record);
+        Item item = data.get(position);
+        holder.applyData(item);
     }
 
     @Override
@@ -40,19 +39,19 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
 
 
     private void createData() {
-        data.add(new Record("Молоко", 35));
-        data.add(new Record("Жизнь", 1));
-        data.add(new Record("Курсы", 50));
-        data.add(new Record("Хлеб", 12));
-        data.add(new Record("Тот самый ужин,который я уплатил за всех, потому что платил картой", 600000));
-        data.add(new Record("", 0));
-        data.add(new Record("Тот самый ужин", 0));
-        data.add(new Record("ракета Falcon Heavy", 1));
-        data.add(new Record("Лего Тысячилетний сокол", 10000000));
-        data.add(new Record("Монитор", 109));
-        data.add(new Record("Макбук", 100));
-        data.add(new Record("Шкаф", 100));
-        data.add(new Record("Шоколадка", 100));
+        data.add(new Item("Молоко", 35));
+        data.add(new Item("Жизнь", 1));
+        data.add(new Item("Курсы", 50));
+        data.add(new Item("Хлеб", 12));
+        data.add(new Item("Тот самый ужин,который я уплатил за всех, потому что платил картой", 600000));
+        data.add(new Item("", 0));
+        data.add(new Item("Тот самый ужин", 0));
+        data.add(new Item("ракета Falcon Heavy", 1));
+        data.add(new Item("Лего Тысячилетний сокол", 10000000));
+        data.add(new Item("Монитор", 109));
+        data.add(new Item("Макбук", 100));
+        data.add(new Item("Шкаф", 100));
+        data.add(new Item("Шоколадка", 100));
 
     }
 
@@ -66,9 +65,9 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
             price = itemView.findViewById(R.id.price);
         }
 
-        public void applyData(Record record) {
-            title.setText(String.valueOf(record.getTitle()));
-            price.setText(String.valueOf(record.getPrice()));
+        public void applyData(Item item) {
+            title.setText(String.valueOf(item.getTitle()));
+            price.setText(String.valueOf(item.getPrice()));
         }
     }
 
