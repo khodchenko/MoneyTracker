@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-public class AddItemActivity extends AppCompatActivity {
+public class  AddItemActivity extends AppCompatActivity {
 
     private static final String TAG = "AddItemActivity";
 

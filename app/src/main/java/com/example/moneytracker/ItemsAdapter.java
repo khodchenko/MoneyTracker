@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
+class  ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
 
     private List<Item> data = new ArrayList<>();
 
@@ -21,9 +21,9 @@ class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
 
     @Override
     public ItemsAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_record, parent, false);
-        return new ItemViewHolder(view);
+       LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
+       return new ItemViewHolder(view);
     }
 
     @Override
