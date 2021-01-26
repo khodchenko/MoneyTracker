@@ -14,6 +14,11 @@ public class MainActivity extends AppCompatActivity {
         Log.e("MainActivity","onCreate");
     }
     @Override
+    protected void onStart () {
+        super.onStart();
+        Log.e("MainActivity", "onStart");
+    }
+    @Override
     protected void onStop () {
         super.onStop();
         Log.e("MainActivity", "onStop");
