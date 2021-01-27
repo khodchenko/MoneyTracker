@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -19,18 +19,17 @@ class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
         createData();
     }
 
-    @NonNull
     @Override
-    public ItemAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item, parent, false);
+    public  ItemAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
         return new ItemViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ItemAdapter.ItemViewHolder holder, int position) {
-        Item record = data.get(position);
-        holder.applyData(record);
+        Item item = data.get(position);
+        holder.applyData(item);
     }
 
     @Override
@@ -64,9 +63,9 @@ class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
             price = itemView.findViewById(R.id.price);
         }
 
-        public void applyData(Item record) {
-            title.setText(record.getTitle());
-            price.setText(String.valueOf(record.getPrice()));
+        public void applyData(Item item) {
+            title.setText(String.valueOf(item.getTitle()));
+            price.setText(String.valueOf(item.getPrice()));
         }
     }
 }

@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 
 public class AddItemActivity extends AppCompatActivity {
 
-    private static final String TAG = "AddItemActivity";
+    private static final String TAG = "AppItemActivity";
 
     private EditText name;
     private EditText price;
