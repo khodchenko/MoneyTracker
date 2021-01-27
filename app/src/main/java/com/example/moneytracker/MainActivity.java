@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity     {
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
