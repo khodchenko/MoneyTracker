@@ -21,6 +21,8 @@ public class ItemsFragment extends Fragment {
 
     public static final int TYPE_INCOMES = 1;
     public static final int TYPE_EXPENSES = 2;
+    public static final int TYPE_BALANCE = 3;
+
 
     private static final String TYPE_KEY = "type";
 

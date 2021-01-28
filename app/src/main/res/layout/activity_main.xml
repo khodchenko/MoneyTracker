@@ -20,19 +20,19 @@
             android:id="@+id/tab1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="РАСХОДЫ"
+            android:text="@string/tab_expenses"
             />
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ДОХОДЫ"
+            android:text="@string/tab_incomes"
             />
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="БАЛАНС"
+            android:text="@string/tab_balance"
             />
     </com.google.android.material.tabs.TabLayout>
 

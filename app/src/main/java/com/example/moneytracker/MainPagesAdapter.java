@@ -1,6 +1,7 @@
 package com.example.moneytracker;
 
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -14,12 +15,15 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
     private static final int PAGE_INCOMES = 0;
     private static final int PAGE_EXPENSES = 1;
     private static final int PAGE_BALANCE = 2;
+
     private String[] titles;
 
-    public MainPagesAdapter(FragmentManager fm, MainActivity mainActivity) {
+    public MainPagesAdapter(FragmentManager fm, Context context) {
         super(fm);
+
+        titles = context.getResources().getStringArray(R.array.tab_title);
     }
-    @NonNull
+
     @Override
     public Fragment getItem(int position) {
         Log.i("MainPagesAdapter", "getItem position = " + position);
@@ -33,7 +37,7 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
                 return ItemsFragment.createItemsFragment(ItemsFragment.TYPE_EXPENSES);
 
             case PAGE_BALANCE:
-                return null;
+                return ItemsFragment.createItemsFragment(ItemsFragment.TYPE_BALANCE);
 
             default:
                 return null;
@@ -45,9 +49,8 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
         return 3;
     }
 
-    @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-       return titles[position];
+        return titles[position];
     }
 }
