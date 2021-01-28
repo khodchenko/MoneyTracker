@@ -3,7 +3,7 @@ package com.example.moneytracker;
 public class Item {
     private final int price;
     private final String title;
-    private String comment;
+
 
 
     public Item(String title, int price) {
@@ -20,7 +20,5 @@ public class Item {
         return title;
     }
 
-    public String getComment() {
-        return comment;
-    }
+
 }

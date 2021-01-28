@@ -1,6 +1,8 @@
 package com.example.moneytracker;
 
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -9,6 +11,10 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 public class MainPagesAdapter extends FragmentPagerAdapter {
 
+    private static final int PAGE_INCOMES = 0;
+    private static final int PAGE_EXPENSES = 1;
+    private static final int PAGE_BALANCE = 2;
+    private String[] titles;
 
     public MainPagesAdapter(FragmentManager fm, MainActivity mainActivity) {
         super(fm);
@@ -16,14 +22,22 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        if (position == 0) {
-            return new ItemsFragment();
-        } else if (position == 1) {
-            return new ItemsFragment();
-        }else if (position == 2) {
-            return new ItemsFragment();
+        Log.i("MainPagesAdapter", "getItem position = " + position);
+
+        switch (position) {
+            case PAGE_INCOMES:
+                return ItemsFragment.createItemsFragment(ItemsFragment.TYPE_INCOMES);
+
+
+            case PAGE_EXPENSES:
+                return ItemsFragment.createItemsFragment(ItemsFragment.TYPE_EXPENSES);
+
+            case PAGE_BALANCE:
+                return null;
+
+            default:
+                return null;
         }
-        return null;
     }
 
     @Override
@@ -34,13 +48,6 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        if (position == 0) {
-            return "ДОХОДЫ";
-        } else if (position == 1) {
-            return "РАСХОДЫ";
-        }else if (position == 2) {
-            return "БАЛАНС";
-        }
-        return null;
+       return titles[position];
     }
 }
