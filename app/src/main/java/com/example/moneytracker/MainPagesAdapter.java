@@ -20,13 +20,15 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
             return new ItemsFragment();
         } else if (position == 1) {
             return new ItemsFragment();
+        }else if (position == 2) {
+            return new ItemsFragment();
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Nullable
@@ -36,6 +38,8 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
             return "ДОХОДЫ";
         } else if (position == 1) {
             return "РАСХОДЫ";
+        }else if (position == 2) {
+            return "БАЛАНС";
         }
         return null;
     }

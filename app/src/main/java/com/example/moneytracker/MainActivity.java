@@ -18,10 +18,10 @@ public class MainActivity extends AppCompatActivity     {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.e("T", "1");
+
         setContentView(R.layout.activity_main);
 
-        Log.e("T", "2");
+
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
 

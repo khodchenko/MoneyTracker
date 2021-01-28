@@ -12,8 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class ItemsFragment extends Fragment{
+
+public class ItemsFragment extends Fragment {
 
     private RecyclerView recycler;
     private ItemsAdapter adapter;
@@ -22,7 +25,7 @@ public class ItemsFragment extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         adapter = new ItemsAdapter();
+        adapter = new ItemsAdapter();
     }
 
     @Override
@@ -36,5 +39,16 @@ public class ItemsFragment extends Fragment{
         recycler = view.findViewById(R.id.list);
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler.setAdapter(adapter);
+
+        loadItems();
+    }
+
+    private void loadItems() {
+        List<Item> items = new ArrayList<>();
+        items.add(new Item("молоко",35));
+        items.add(new Item("молоко",35));
+        items.add(new Item("молоко",35));
+
+        adapter.setData(items);
     }
 }
