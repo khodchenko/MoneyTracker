@@ -6,40 +6,37 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class  ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
+class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
 
     private List<Item> data = new ArrayList<>();
 
-//    public ItemsAdapter(){
-//        createData();
-//    }
-
     public void setData(List<Item>data){
         this.data= data;
+        notifyDataSetChanged();
     }
 
     @Override
     public ItemsAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
-       return new ItemViewHolder(view);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.item, parent, false);
+        return new ItemViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(ItemsAdapter.ItemViewHolder holder, int position) {
-        Item item = data.get(position);
-        holder.applyData(item);
+        Item record = data.get(position);
+        holder.applyData(record);
     }
-
     @Override
     public int getItemCount() {
         return data.size();
     }
+
 
 
 //    private void createData() {
@@ -70,8 +67,8 @@ class  ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHolder> {
         }
 
         public void applyData(Item item) {
-            title.setText(String.valueOf(item.getTitle()));
-            price.setText(String.valueOf(item.getPrice()));
+            title.setText(item.name);
+            price.setText(String.valueOf(item.price));
         }
     }
 
