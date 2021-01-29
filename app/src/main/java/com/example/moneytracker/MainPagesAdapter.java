@@ -1,27 +1,47 @@
 package com.example.moneytracker;
 
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import android.content.Context;
+import android.util.Log;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import org.jetbrains.annotations.NotNull;
+
 public class MainPagesAdapter extends FragmentPagerAdapter {
 
+    private static final int PAGE_INCOMES = 0;
+    private static final int PAGE_EXPENSES = 1;
+    private static final int PAGE_BALANCE = 2;
 
-    public MainPagesAdapter(FragmentManager fm, MainActivity mainActivity) {
+    private final String[] titles;
+
+    public MainPagesAdapter(FragmentManager fm, Context context) {
         super(fm);
+
+        titles = context.getResources().getStringArray(R.array.tab_title);
     }
-    @NonNull
+
+    @NotNull
     @Override
     public Fragment getItem(int position) {
-        if (position == 0) {
-            return new ItemsFragment();
-        } else if (position == 1) {
-            return new ItemsFragment();
+        Log.i("MainPagesAdapter", "getItem position = " + position);
+
+        switch (position) {
+            case PAGE_INCOMES:
+                return ItemsFragment.createItemsFragment(Item.TYPE_INCOMES);
+
+
+            case PAGE_EXPENSES:
+                return ItemsFragment.createItemsFragment(Item.TYPE_EXPENSES);
+
+            case PAGE_BALANCE:
+               // return ItemsFragment.createItemsFragment(Item.TYPE_BALANCE);
+                return null;
+            default:
+                return null;
         }
-        return null;
     }
 
     @Override
@@ -29,14 +49,8 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
         return 2;
     }
 
-    @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        if (position == 0) {
-            return "ДОХОДЫ";
-        } else if (position == 1) {
-            return "РАСХОДЫ";
-        }
-        return null;
+        return titles[position];
     }
 }
