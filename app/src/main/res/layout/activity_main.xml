@@ -13,7 +13,27 @@
         android:layout_height="?actionBarSize"
         android:background="@color/purple_500"
         app:tabSelectedTextColor="@color/White"
-        app:tabTextColor="@color/White">
+        app:tabTextColor="@color/White"
+        >
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/tab1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tab_expenses"
+        />
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/tab2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tab_income"
+        />
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/tab3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tab_balance"
+        />
 
     </com.google.android.material.tabs.TabLayout>
 

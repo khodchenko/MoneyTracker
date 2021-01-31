@@ -2,6 +2,7 @@
     <string name="app_name">MoneyTracker</string>
     <string name="add_item_title">Новая запись</string>
     <string name="add_item_stringName">Название</string>
+    <string name="add_item_stringSign">₴ </string>
     <string name="add_item_stringPrice">0 </string>
     <string name="activity_item_list_title">Учёт бюджета </string>
 

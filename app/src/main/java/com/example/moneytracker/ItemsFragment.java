@@ -1,9 +1,13 @@
 package com.example.moneytracker;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,30 +15,36 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ItemsFragment extends Fragment {
 
-    private static final int TYPE_UNKNOWN = -1;
-
-    public static final int TYPE_INCOMES = 1;
-    public static final int TYPE_EXPENSES = 2;
-    public static final int TYPE_BALANCE = 3;
 
     private static final String TYPE_KAY = "type";
+    private static final String TAG = "ItemsFragment";
 
-    public static ItemsFragment createItemsFragment(int type){
+    public static ItemsFragment createItemsFragment(String type) {
         ItemsFragment fragment = new ItemsFragment();
 
         Bundle bundle = new Bundle();
-        bundle.putInt(ItemsFragment.TYPE_KAY, ItemsFragment.TYPE_INCOMES);
+        bundle.putString(ItemsFragment.TYPE_KAY, type);
 
         fragment.setArguments(bundle);
         return fragment;
     }
 
-    private int type;
+    private String type;
 
     private RecyclerView recycler;
     private ItemAdapter adapter;
+
+    private Api api;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,11 +52,13 @@ public class ItemsFragment extends Fragment {
         adapter = new ItemAdapter();
 
         Bundle bundle = getArguments();
-        type = bundle.getInt(TYPE_KAY, TYPE_UNKNOWN);
+        type = bundle.getString(TYPE_KAY, Item.TYPE_EXPENSES);
 
-        if (type == TYPE_UNKNOWN) {
+        if (type.equals(Item.TYPE_UNKNOWN)) {
             throw new IllegalArgumentException("Unknown type");
         }
+
+        api = ((App) getActivity().getApplication()).getApi();
     }
 
     @Nullable
@@ -63,5 +75,115 @@ public class ItemsFragment extends Fragment {
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler.setAdapter(adapter);
 
+        loadItems();
+
     }
+
+    private void loadItems() {
+        Call<List<Item>> call = api.getItems(type);
+
+        call.enqueue(new Callback<List<Item>>() {
+            @Override
+            public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
+                adapter.setData(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Item>> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+//    private void loadItems() {
+//        AsyncTask<Void, Void, List<Item>> task = new AsyncTask<Void, Void, List<Item>>() {
+//            @Override
+//            protected void onPreExecute() {
+//                Log.d(TAG, "onPreExecute: thread name =" + Thread.currentThread().getName());
+//            }
+//
+//            @Override
+//            protected List<Item> doInBackground(Void... voids) {
+//                Log.d(TAG, "onPreExecute: thread name =" + Thread.currentThread().getName());
+//
+//                Call<List<Item>> call = api.getItems(type);
+//                try {
+//                    List<Item> items = call.execute().body();
+//                    return items;
+//
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(List<Item> items) {
+//                if (items != null) {
+//                    adapter.setData(items);
+//
+//                }
+//            }
+//        };
+//       task.execute();
+//    }
+
+    // Thread and Handler///////////////////////////////////////////////////////////////////////////
+
+//    private void loadItems() {
+//
+//        Log.d(TAG, "loadItems: current thread " + Thread.currentThread().getName());
+//
+//        new LoadItemsTask(new Handler(callback)).start();
+//
+//
+//    }
+//
+//    private Handler.Callback callback = new Handler.Callback() {
+//        @Override
+//        public boolean handleMessage(Message msg) {
+//
+//            if (msg.what == DATA_LOADED) {
+//                List<Item> items = (List<Item>) msg.obj;
+//                adapter.setData(items);
+//            }
+//            return true;
+//
+//        }
+//    };
+//
+//    private final static int DATA_LOADED = 123;
+//
+//    private class LoadItemsTask implements Runnable {
+//
+//        private Thread thread;
+//        private Handler handler;
+//
+//        public LoadItemsTask(Handler handler) {
+//            thread = new Thread(this);
+//            this.handler = handler;
+//        }
+//
+//        public void start() {
+//            thread.start();
+//        }
+//
+//        @Override
+//        public void run() {
+//
+//            Log.d(TAG, "run: current thread " + Thread.currentThread().getName());
+//
+//            Call<List<Item>> call = api.getItems(type);
+//            try {
+//                List<Item> items = call.execute().body();
+//
+//                handler.obtainMessage(DATA_LOADED, items).sendToTarget();
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }

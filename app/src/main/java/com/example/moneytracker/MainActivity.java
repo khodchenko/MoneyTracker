@@ -10,6 +10,8 @@ import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
@@ -19,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         Log.e("T", "1");
         setContentView(R.layout.activity_main);
 
-        Log.e("T", "2");
+        Log.i(TAG,"onCreate: ");
+
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
 
@@ -28,17 +31,15 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
     }
-
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e("MainActivity", "onStart");
+        Log.d("MainActivity", "onStart");
     }
-
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e("MainActivity", "onStop");
+        Log.d("MainActivity", "onStop");
     }
-
 }
+

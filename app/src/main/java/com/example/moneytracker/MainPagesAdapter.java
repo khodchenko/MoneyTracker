@@ -1,11 +1,9 @@
 package com.example.moneytracker;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -18,7 +16,7 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
 
     private String[] titles;
 
-    public MainPagesAdapter(@NonNull FragmentManager fm, Context context) {
+    public MainPagesAdapter(FragmentManager fm, Context context) {
         super(fm);
 
        titles = context.getResources().getStringArray(R.array.tab_title);
@@ -31,13 +29,14 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case PAGE_INCOMES:
-                return ItemsFragment.createItemsFragment(ItemsFragment.TYPE_INCOMES);
+                return ItemsFragment.createItemsFragment(Item.TYPE_INCOMES);
 
             case PAGE_EXPENSES:
-                return ItemsFragment.createItemsFragment(ItemsFragment.TYPE_EXPENSES);
+                return ItemsFragment.createItemsFragment(Item.TYPE_EXPENSES);
 
             case PAGE_BALANCE:
-                return ItemsFragment.createItemsFragment(ItemsFragment.TYPE_BALANCE);
+                // return ItemsFragment.createItemsFragment(Item.TYPE_BALANCE);
+                return null;
 
             default:
                 return null;
@@ -46,13 +45,11 @@ public class MainPagesAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
-    @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-
-       return titles[position];
+        return titles[position];
     }
 }
