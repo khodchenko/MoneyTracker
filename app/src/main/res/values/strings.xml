@@ -4,7 +4,7 @@
     <string name="add_item_stringName">Название</string>
     <string name="add_item_stringPrice">0 </string>
     <string name="add_item_stringSign">₴ </string>
-    <string name="activity_items_list_title">Учет бюджета</string>
+    <string name="main_screen_title">Учет бюджета</string>
     <string name="myText">Деня лох</string>
 
     <string name="tab_balance">Ваш баланс</string>

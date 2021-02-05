@@ -1,7 +1,9 @@
 package com.example.moneytracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -16,46 +18,42 @@ public class  AddItemActivity extends AppCompatActivity {
 
     private static final String TAG = "AddItemActivity";
 
+    public static final String TYPE_KEY = "type";
+
     private EditText name;
     private EditText price;
     private Button addBtn;
 
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_additem);
 
-        setTitle(R.string.add_item_title);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle(R.string.add_item_title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         name = findViewById(R.id.name);
         price = findViewById(R.id.price);
-
-        name.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                addBtn.setEnabled(!TextUtils.isEmpty(s));
-            }
-        });
         addBtn = findViewById(R.id.add_btn);
 
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String itemName = name.getText().toString();
-                String itemPrice = price.getText().toString();
-            }
-        });
+        type = getIntent().getStringExtra(TYPE_KEY);
 
+
+      addBtn.setOnClickListener(v -> {
+          String nameValue = name.getText().toString();
+          String priceValue = price.getText().toString();
+
+          Item item = new Item(nameValue,priceValue,type);
+
+          Intent intent = new Intent();
+          intent.putExtra("item",item);
+        setResult(RESULT_OK,intent);
+        finish();
+      });
     }
 }
