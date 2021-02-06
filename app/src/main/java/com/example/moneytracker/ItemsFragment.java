@@ -27,7 +27,7 @@ public class ItemsFragment extends Fragment {
 
     private static final String TYPE_KEY = "type";
     private static final String TAG = "ItemsFragment";
-    private static final int ADD_ITEM_REQUEST_CODE = 123;
+    public static final int ADD_ITEM_REQUEST_CODE = 123;
 
     public static ItemsFragment createItemsFragment(String type) {
         ItemsFragment fragment = new ItemsFragment();
@@ -42,7 +42,6 @@ public class ItemsFragment extends Fragment {
 
     private String type;
     private RecyclerView recycler;
-    private FloatingActionButton fab;
     private ItemsAdapter adapter;
     private SwipeRefreshLayout refresh;
 
@@ -54,7 +53,7 @@ public class ItemsFragment extends Fragment {
         adapter = new ItemsAdapter();
 
         Bundle bundle = getArguments();
-        type = bundle.getString(TYPE_KEY, Item.TYPE_EXPENSES);  //TODO CHECK
+        type = bundle.getString(TYPE_KEY, Item.TYPE_EXPENSES);
 
         if (type.equals(Item.TYPE_UNKNOWN)) {
             throw new IllegalArgumentException("Unknown type");
@@ -77,13 +76,7 @@ public class ItemsFragment extends Fragment {
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler.setAdapter(adapter);
 
-        fab = view.findViewById(R.id.fab);
-        fab.setOnClickListener(v -> {
-            Log.i(TAG, "OnClick");
-            Intent intent = new Intent(getContext(), AddItemActivity.class);
-            intent.putExtra(AddItemActivity.TYPE_KEY, type);
-            startActivityForResult(intent, ADD_ITEM_REQUEST_CODE);
-        });
+
 
         refresh = view.findViewById(R.id.refresh);
         refresh.setColorSchemeColors(Color.DKGRAY);
@@ -112,7 +105,9 @@ public class ItemsFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == ADD_ITEM_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             Item item = data.getParcelableExtra("item");
-            adapter.addItem(item);
+            if (item.type.equals(type)){
+                adapter.addItem(item);
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
