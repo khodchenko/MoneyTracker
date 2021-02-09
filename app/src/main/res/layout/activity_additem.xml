@@ -7,11 +7,19 @@
     android:orientation="vertical"
     tools:context=".AddItemActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:elevation="8dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:background="@color/white"
-        android:elevation="@android:dimen/app_icon_size"
+        android:elevation="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="22dp"
@@ -52,7 +60,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/ic_add"
-            android:enabled="false" />
+             />
 
     </LinearLayout>
 

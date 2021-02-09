@@ -15,5 +15,7 @@
         <!-- Customize your theme here. -->
         <item name="android:textColor">#ffffffff</item>
         <item name="android:textColorPrimary">#295055</item>
+        <item name="android:actionModeBackground">@color/colorPrimary</item>
+        <item name="windowActionModeOverlay">true</item> 
     </style>
 </resources>
