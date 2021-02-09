@@ -1,7 +1,9 @@
 package com.example.moneytracker;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -18,9 +20,12 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
     private static final String TAG = "MainActivity";
 
 
+
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private FloatingActionButton fab;
+
+    private ActionMode actionMode = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +106,9 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
                 break;
             case ViewPager.SCROLL_STATE_DRAGGING:
             case ViewPager.SCROLL_STATE_SETTLING:
+                if(actionMode!=null){
+                    actionMode.finish(); //Закрывает екшнмод если перелистнуь
+                }
                 fab.setEnabled(false);
                 break;
         }
@@ -112,6 +120,22 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         for(Fragment fragment : getSupportFragmentManager().getFragments()){
             fragment.onActivityResult(requestCode, resultCode,data);
         }
+    }
+                //
+    @Override
+    public void onSupportActionModeStarted(@NonNull ActionMode mode) {
+        super.onSupportActionModeStarted(mode);
+        Log.i(TAG,"onSupportActionModeStarted");
+        fab.hide();
+        actionMode = mode;
+    }
+
+    @Override
+    public void onSupportActionModeFinished(@NonNull ActionMode mode) {
+        super.onSupportActionModeFinished(mode);
+        Log.i(TAG,"onSupportActionModeFinished");
+        fab.show();
+        actionMode = null;
     }
 }
 
