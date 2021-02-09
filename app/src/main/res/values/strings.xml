@@ -12,6 +12,7 @@
     <string name="tab_incomes">Доход</string>
 
     <string name="price">%1$d \u20bd</string>
+    <string name="remove">Удалить</string>
 
     <string-array name="tab_title">
         <item>@string/tab_expenses</item>
