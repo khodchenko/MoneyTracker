@@ -68,16 +68,11 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("MainActivity", "onStart");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("MainActivity", "onStop");
+    @Override                              //TODO LOGIN SCREEN
+    protected void onResume() {
+        super.onResume();
+        Intent intent = new Intent(this, AuthActivity.class);
+        startActivity(intent);
     }
 
     @Override
