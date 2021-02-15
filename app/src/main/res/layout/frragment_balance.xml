@@ -25,8 +25,8 @@
         android:text="@string/balance_total_title"
         android:textColor="@color/balance_secondary_text_color"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_balance_total"
+        app:layout_constraintStart_toStartOf="@+id/tv_balance_total"
         app:layout_constraintTop_toBottomOf="@+id/tv_balance_total" />
 
     <TextView
@@ -36,8 +36,8 @@
         android:text="@string/tab_expenses"
         android:textColor="@color/balance_secondary_text_color"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_balance_expense"
+        app:layout_constraintStart_toStartOf="@+id/tv_balance_expense"
         app:layout_constraintTop_toBottomOf="@+id/tv_balance_expense" />
 
     <TextView
@@ -47,8 +47,8 @@
         android:text="@string/tab_incomes"
         android:textColor="@color/balance_secondary_text_color"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="@+id/tv_balance_income"
+        app:layout_constraintStart_toStartOf="@+id/tv_balance_income"
         app:layout_constraintTop_toBottomOf="@+id/tv_balance_income" />
 
     <TextView
