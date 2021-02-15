@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         tabLayout = findViewById(R.id.tabLayout);
 
         MainPagesAdapter adapter = new MainPagesAdapter(getSupportFragmentManager(), this);
-        viewPager.setAdapter(adapter);
+       viewPager.setAdapter(adapter);
+        
         viewPager.addOnPageChangeListener(this);
 
         tabLayout.setupWithViewPager(viewPager);
@@ -68,11 +69,20 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         });
     }
 
-    @Override                              //TODO LOGIN SCREEN
-    protected void onResume() {
-        super.onResume();
-        Intent intent = new Intent(this, AuthActivity.class);
-        startActivity(intent);
+//    @Override                              //TODO LOGIN SCREEN
+//    protected void onResume() {
+//        super.onResume();
+//        if (((App) getApplication()).isAuthorized()) {
+//            initTabs();
+//        } else {
+//            Intent intent = new Intent(this, AuthActivity.class);
+//            startActivity(intent);
+//        }
+//    }
+
+    private void initTabs() {
+        MainPagesAdapter adapter = new MainPagesAdapter(getSupportFragmentManager(), this);
+        viewPager.setAdapter(adapter);
     }
 
     @Override

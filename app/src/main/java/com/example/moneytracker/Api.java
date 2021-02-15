@@ -1,5 +1,7 @@
 package com.example.moneytracker;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -12,4 +14,6 @@ public interface Api {
     Call<List<Item>> getItems(@Query("type") String type);
 
 
+    @GET("/auth")
+    Call<AuthResult> auth(@Query("social_user_id") String userId);
 }
