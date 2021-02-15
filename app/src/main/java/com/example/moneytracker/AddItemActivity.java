@@ -1,5 +1,6 @@
 package com.example.moneytracker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -9,6 +10,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,5 +57,15 @@ public class  AddItemActivity extends AppCompatActivity {
         setResult(RESULT_OK,intent);
         finish();
       });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {   //вверх назад
+        if(item.getItemId()==android.R.id.home){
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

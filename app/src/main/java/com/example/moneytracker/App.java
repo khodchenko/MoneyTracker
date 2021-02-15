@@ -1,6 +1,7 @@
 package com.example.moneytracker;
 
 import android.app.Application;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -13,7 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class App extends Application {
     private static final String TAG = "App";
-
+    private static final String PREFS_NAME = "shared_prefs1";
+    private static final String KEY_TOKEN = "auth_token";
     private Api api;
 
 
@@ -49,4 +51,19 @@ public class App extends Application {
         return api;
     }
 
+    public void saveAuthToken(String token) {
+        getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+                .edit()
+                .putString(KEY_TOKEN, token)
+                .apply();
+    }
+
+    public String getAuthToken() {
+        return getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+                .getString(KEY_TOKEN, null);
+    }
+
+    public boolean isAuthorized() {
+        return !TextUtils.isEmpty(getAuthToken());
+    }
 }

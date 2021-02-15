@@ -13,6 +13,8 @@
 
     <string name="price">%1$d \u20bd</string>
     <string name="remove">Удалить</string>
+    <string name="server_client_id" />
+    <string name="balance_total_title">ваш баланс</string>
 
     <string-array name="tab_title">
         <item>@string/tab_expenses</item>
