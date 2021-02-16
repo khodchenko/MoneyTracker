@@ -1,6 +1,6 @@
-package com.example.moneytracker;
+package com.example.moneytracker.api;
 
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.example.moneytracker.Item;
 
 import java.util.List;
 

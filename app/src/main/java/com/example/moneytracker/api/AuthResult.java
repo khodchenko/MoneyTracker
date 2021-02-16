@@ -1,4 +1,4 @@
-package com.example.moneytracker;
+package com.example.moneytracker.api;
 
 import com.google.gson.annotations.SerializedName;
 

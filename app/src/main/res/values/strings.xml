@@ -11,7 +11,8 @@
     <string name="tab_expenses">Расход</string>
     <string name="tab_incomes">Доход</string>
 
-    <string name="price">%1$d \u20bd</string>
+    <string name="price">%1$d \u20b4</string>
+
     <string name="remove">Удалить</string>
     <string name="server_client_id" />
     <string name="balance_total_title">ваш баланс</string>
