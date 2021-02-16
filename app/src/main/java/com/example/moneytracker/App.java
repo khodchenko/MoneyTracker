@@ -4,6 +4,7 @@ import android.app.Application;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.example.moneytracker.api.Api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
