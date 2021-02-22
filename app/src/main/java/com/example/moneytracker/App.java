@@ -38,7 +38,7 @@ public class App extends Application {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://loftschoolandroid.getsandbox.com/")
+                .baseUrl("https://dzmoneytracker.getsandbox.com/items/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
                 .build();
